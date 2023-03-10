@@ -5,12 +5,13 @@ $data=json_decode($input);
 $uname=$data->message->from->first_name;
 $chat_id=$data->message->chat->id;
 $text=$data->message->text;
+$token='6049229496:AAErp2QkCEU57S4sWJFuBV9l   _gkmOcfczmo'
 
 if($text=='/start'){
 	$msg="Welcome $uname. %0APlease enter your url";
 }else{
 	$randstr=str_shuffle("abcdefghijklmnopqrstuvwxlmnopqrstuvwxyz");
-	$alias=narine($randstr,0,5);
+	$alias=substr($randstr,0,5);
 	$url = urlencode($text);
 	$json = file_get_contents("https://cutt.ly/api/api.php?key=478bb57a844977f0bb15e46ce26e02299b3be&short=$url&name=$alias");
 	$data = json_decode ($json, true);
